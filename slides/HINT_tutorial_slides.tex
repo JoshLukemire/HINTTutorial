@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{hyperref}
 % Needed to get letters in math mode...
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
@@ -27,17 +28,111 @@
 \tableofcontents
 \end{frame}
 
-\section{HINT}
-\subsection{Background}
+\section{Introduction and Setup}
 
-\begin{frame}{HINT}
-The HINT is a Matlab toolbox implementing the hc-ICA method of CITE. It is intended to form a base for hierarchical ICA methods.
+\subsection{Getting Started}
+
+\begin{frame}{Downloading HINT and the example data}
+The current version of HINT can be downloaded from github at:\\
+\url{https://github.com/Emory-CBIS/HINT} \\
+\medskip
+The tutorial data, as well as these slides, can be downloaded from github at:\\
+\url{https://github.com/JoshLukemire/HINTTutorial}
 \end{frame}
 
-\subsection{Toolbox}
-
-\begin{frame}{HINT}
-some pics go here
+\begin{frame}{Opening the toolbox}
+\begin{itemize}
+\item Navigate to the HINT folder you downloaded from github
+\item Open the "hint.m" file in Matlab
+\item Click run to start up the GUI
+\end{itemize}
 \end{frame}
+
+\section{GUI Layout and Functionality}
+
+\begin{frame}{HINT GUI}
+The HINT GUI consists of three panels, each corresponding to a part of an hc-ICA analysis.
+
+\begin{enumerate}
+\item Prepare Analysis
+\item Run Analysis
+\item Visualize
+\end{enumerate}
+\end{frame}
+
+\section{Prepare Analysis Panel}
+
+\begin{frame}
+The prepare analysis panel is where the bulk of the work takes place. Here you will:
+\begin{itemize}
+\item Specify and analysis folder and prefix
+\item Load the data and setup the model
+\item Preprocess the data
+\item Obtain an initial guess for the EM algorithm
+\item Remove unwanted independent components from the analysis
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example Data}
+IN THIS SLIDE FILL OUT THE OUTPUT FOLDER AND THE PREFIX, SHOW EXAMPLE OF OUTPUT FOLDER, SHOW EXAMPLE LOG
+\end{frame}
+
+\subsection{Loading Data}
+\begin{frame}{Loading the data}
+You have two options for loading the data. First, you can start a new analysis by inputting the nifti files, the mask, and the covariates. Alternatively, if you have already run an hc-ICA analysis before and want to modify it, you can load the previous analysis. FIRST DO BASIC VERSION, THEN LATER INI REDO WILL DO LOAD SAVED ANALYSIS
+\end{frame}
+
+\begin{frame}{Loading the data}
+IMAGE OF LOAD DATA WINDOW GOES HERE, IN PRESENTATION WILL SWITCH TO MATLAB
+\end{frame}
+
+\subsection{Model Specification}
+\begin{frame}{Model Specification}
+Now that the data is loaded, we need to specify the model. Click on the CHECK FINAL BUTTON NAME
+\end{frame}
+
+\begin{frame}{Model Specification}
+IMAGE OF MODEL SPEC WINDOW WITH EXPLANATIONS GOES HERE
+\end{frame}
+
+
+\begin{frame}{Model Specification}
+IMAGE OF MODEL SPEC WINDOW WITH AFTER SPECIFYING INTERACTIONS GOES HERE
+\end{frame}
+
+\subsection{Preprocessing}
+
+\begin{frame}
+Analyses in HINT require the data to be demeaned and prewhitening. The toolbox handles this in the XXX sub-panel. SHOW IMAGE OF THAT PANEL HERE. It is here that you select the number of principal components for the initial data reduction, as well as the total number of independent components in the model.
+\end{frame}
+
+\subsection{Initial Guess}
+
+\begin{frame}
+The EM algorithm requires an initial guess to XXXXXXXX. INCLUDE IMAGE, EXPLAIN DONE USING GIFT TOOLBOX AND THAT THIS IS WHERE NUMPCA MATTERS.
+\end{frame}
+
+\begin{frame}
+SHOW OUTPUT VIEWER
+\end{frame}
+
+\section{Run Analysis Panel}
+
+\begin{frame}
+stuff goes here
+\end{frame}
+
+\section{Visualization Panel}
+
+\begin{frame}
+THINGS TO SHOW: 1 POPULATION LEVEL VIEWER, MASK CREATION; 2 COVARIATE VIEWER, CONTRASTS; 3 SUB POP VIEWER, SHOW SIDE BY SIDE COMPARISON
+\end{frame}
+
+\section{Second Example}
+
+\begin{frame}
+FOR THIS EXAMPLE, HAVE THEM CLOSE OUT MATLAB, REOPEN AND LOAD THE RUNINFO FILE, THEN HAVE THEM REESTIMATE THE INTIAL GUESS AND RMEOVE ONE OF THE ICS. THEN HAVE THEM RUN IT FROM A SCRIPT ANALYSIS AND SHOW THEMM THE COMPILE RESULTS OPTION. THIS IS ALSO A GOOD TIME TO SHOW THE ITERATION RESULT SAVING. 
+\end{frame}
+
 
 \end{document}
