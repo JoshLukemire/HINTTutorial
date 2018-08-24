@@ -9,6 +9,7 @@
 % Needed to get letters in math mode...
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
+\usepackage{listings}
 
 \author{Joshua Lukemire}
 \title{HINT Tutorial}
@@ -63,95 +64,226 @@ The HINT GUI consists of three panels, each corresponding to a part of an hc-ICA
 \section{Prepare Analysis Panel}
 
 \begin{frame}
-The prepare analysis panel is where the bulk of the work takes place. Here you will:
-\begin{itemize}
+\frametitle{Prepare analysis panel}
+\begin{columns}[T] % align columns
+	\begin{column}{.48\textwidth}
+		\color{red}\rule{\linewidth}{0pt}
+		
+		\begin{itemize}
 \item Specify and analysis folder and prefix
 \item Load the data and setup the model
 \item Preprocess the data
 \item Obtain an initial guess for the EM algorithm
 \item Remove unwanted independent components from the analysis
 \end{itemize}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.51\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+		\includegraphics[width=1.2\linewidth]{figs/panel1empty}
+	\end{column}%
+\end{columns}
 \end{frame}
 
-\begin{frame}{Example Data}
-IN THIS SLIDE FILL OUT THE OUTPUT FOLDER AND THE PREFIX, SHOW EXAMPLE OF OUTPUT FOLDER, SHOW EXAMPLE LOG
-\end{frame}
+%\begin{frame}{Example Data}
+%IN THIS SLIDE FILL OUT THE OUTPUT FOLDER AND THE PREFIX, SHOW EXAMPLE OF OUTPUT FOLDER, SHOW EXAMPLE LOG
+%\end{frame}
 
 \subsection{Loading Data}
 \begin{frame}{Loading the data}
-You have two options for loading the data. First, you can start a new analysis by inputting the nifti files, the mask, and the covariates. Alternatively, if you have already run an hc-ICA analysis before and want to modify it, you can load the previous analysis. FIRST DO BASIC VERSION, THEN LATER INI REDO WILL DO LOAD SAVED ANALYSIS
+\begin{columns}[T] % align columns
+	\begin{column}{.6\textwidth}
+		\color{black}\rule{\linewidth}{0pt}
+		
+Two options for loading the data
+
+\begin{description}
+\item[Import Nifti data] Start a new analysis by selecting the Nifti files, the mask file, and the covariate file.
+\item[Load saved analysis] Load a previous HINT analysis by selecting a runinfo file (more on this later).
+\end{description}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.3\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+		\includegraphics[width=1\linewidth]{figs/subpanelinput}
+	\end{column}%
+\end{columns}
 \end{frame}
 
 \begin{frame}{Loading the data}
-IMAGE OF LOAD DATA WINDOW GOES HERE, IN PRESENTATION WILL SWITCH TO MATLAB
+
+\includegraphics[width=1\linewidth]{figs/inputNIFTI}
+
 \end{frame}
 
 \subsection{Model Specification}
 \begin{frame}{Model Specification}
-Now that the data is loaded, we need to specify the model. Click on the CHECK FINAL BUTTON NAME
-\end{frame}
-
-\begin{frame}{Model Specification}
-IMAGE OF MODEL SPEC WINDOW WITH EXPLANATIONS GOES HERE
+\includegraphics[width=1\linewidth]{figs/covWindowAnnot}
 \end{frame}
 
 
-\begin{frame}{Model Specification}
-IMAGE OF MODEL SPEC WINDOW WITH AFTER SPECIFYING INTERACTIONS GOES HERE
-\end{frame}
-
-\subsection{Preprocessing}
+\subsection{Preprocessing and Initial Guess}
 
 \begin{frame}
-Analyses in HINT require the data to be demeaned and prewhitening. The toolbox handles this in the XXX sub-panel. SHOW IMAGE OF THAT PANEL HERE. It is here that you select the number of principal components for the initial data reduction, as well as the total number of independent components in the model.
+\begin{columns}[T] % align columns
+	\begin{column}{.6\textwidth}
+		\color{black}\rule{\linewidth}{0pt}
+		
+Analyses in HINT require the data to be demeaned and prewhitened. Two things to select:
+
+\begin{description}
+\item[Number of PCs] The number of principal components used by the tc-GICA approach to get an initial guess.
+\item[Number of ICs] The number of independent components for the analysis.
+\end{description}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.3\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+		\includegraphics[width=1.2\linewidth]{figs/subpanelpreproc}
+	\end{column}%
+\end{columns}
 \end{frame}
 
-\subsection{Initial Guess}
-
 \begin{frame}
-The EM algorithm requires an initial guess to XXXXXXXX. INCLUDE IMAGE, EXPLAIN DONE USING GIFT TOOLBOX AND THAT THIS IS WHERE NUMPCA MATTERS.
+After obtaining an initial guess, you will see the following window:
+\includegraphics[width=1\linewidth]{figs/iniGuess1}
 \end{frame}
 
 \begin{frame}
-SHOW OUTPUT VIEWER
+After verifying that the initial guess looks reasonable, click ``saved setup and continue to move to the second panel. Clicking this also creates a file called the ``runinfo" file in the output directory with all information needed to replicate or change the initial setup.
 \end{frame}
 
 \section{Run Analysis Panel}
 
 \begin{frame}
-stuff goes here
+\includegraphics[width=1\linewidth]{figs/panel2empty}
+\end{frame}
+
+\begin{frame}
+\includegraphics[width=1\linewidth]{figs/panel2filled}
 \end{frame}
 
 \section{Visualization Panel}
 
 \begin{frame}
-THINGS TO SHOW: 1 POPULATION LEVEL VIEWER, MASK CREATION; 2 COVARIATE VIEWER, CONTRASTS; 3 SUB POP VIEWER, SHOW SIDE BY SIDE COMPARISON
+\begin{columns}[T] % align columns
+	\begin{column}{.4\textwidth}
+		\color{black}\rule{\linewidth}{0pt}
+		
+\begin{enumerate}
+\item Population Level Results
+\item Sub-population Level Results
+\item Subject Specific Display Maps
+\item Beta-coefficient Display Maps
+\end{enumerate}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.6\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+		\includegraphics[width=1.2\linewidth]{figs/panel3empty}
+	\end{column}%
+\end{columns}
+\end{frame}
+
+\subsection{Study Population-Level Viewer}
+
+\begin{frame}{Population Level Results}
+		\includegraphics[width=1\linewidth]{figs/viewerPop}
+\end{frame}
+
+\begin{frame}{Creating a mask}
+		\includegraphics[width=0.8\linewidth]{figs/maskExplanation}
+\end{frame}
+
+\subsection{Sub-population Viewer}
+
+\begin{frame}{Sub-population Viewer}
+\begin{columns}[T] % align columns
+	\begin{column}{.4\textwidth}
+		\color{black}\rule{\linewidth}{0pt}
+
+\begin{itemize}	
+\item This window allows you to specify sub-populations of interest by entering their covariate values. 
+\item Two sub-populations can be compared side-by-side by selecting the ``compare Sub-populations" button.
+\end{itemize}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.6\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+				\includegraphics[width=1\linewidth]{figs/viewerSubpopControl}
+	\end{column}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Comparing Sub-populations}
+		\includegraphics[width=1\linewidth]{figs/subPopCompareEx}
+\end{frame}
+
+\subsection{Single Subject Viewer}
+
+
+\begin{frame}{Single Subject Viewer}
+\begin{columns}[T] % align columns
+	\begin{column}{.4\textwidth}
+		\color{black}\rule{\linewidth}{0pt}
+
+\begin{itemize}	
+\item This window allows you to view the IC estimates for individual subjects.
+\item You can also apply any mask created using the population-level viewer to the subject level data.
+\end{itemize}
+		
+	\end{column}%
+	\hfill%
+	\begin{column}{.6\textwidth}
+		\color{blue}\rule{\linewidth}{0pt}
+				\includegraphics[width=1\linewidth]{figs/singleSubjEx}
+	\end{column}%
+\end{columns}\end{frame}
+
+\subsection{Beta Coefficient Display Map}
+
+\begin{frame}{Beta Coefficient Display}
+		\includegraphics[width=1\linewidth]{figs/betaViewer}
+\end{frame}
+
+\begin{frame}{Specifying Contrasts}
+		\includegraphics[width=1\linewidth]{figs/contrastExample}
 \end{frame}
 
 \section{Other Functionality}
 
-\begin{frame}
-FOR THIS EXAMPLE, HAVE THEM CLOSE OUT MATLAB, REOPEN AND LOAD THE RUNINFO FILE, THEN HAVE THEM REESTIMATE THE INTIAL GUESS AND RMEOVE ONE OF THE ICS. THEN HAVE THEM RUN IT FROM A SCRIPT ANALYSIS AND SHOW THEMM THE COMPILE RESULTS OPTION. THIS IS ALSO A GOOD TIME TO SHOW THE ITERATION RESULT SAVING. 
-\end{frame}
-
 \subsection{Loading a saved analysis}
 \begin{frame}{Loading a saved analysis}
-xxx
+Instead of re-starting everything, you can load a previous runinfo file using the ``load a saved analysis" option and navigating to the runinfo file. Everything will auto-fill. However, if you want to re-run the initial guess, you will also have to re-run the preprocessing step. This is for memory reasons.
 \end{frame}
 
 \subsection{Removing ICs from the analysis}
 \begin{frame}{Removing ICs from the analysis}
-xxx
+Some of the components from the initial guess might not be of interest for the hc-ICA analysis. In this case, HINT provides an option to remove the unwanted IC from the data. 
+\end{frame}
+
+\begin{frame}{Removing ICs from the analysis}
+Some of the components from the initial guess might not be of interest for the hc-ICA analysis. In this case, HINT provides an option to remove the unwanted IC from the data. 
 \end{frame}
 
 \subsection{Running the EM algorithm from a script}
 \begin{frame}{Running the EM algorithm from a script}
-xxx
+The matlab function estimateFromSavedData() allows you to run the EM algorithm from a script instead of the GUI. This is used if you want to submit to a cluster instead of running the algorithm on your machine.
+\includegraphics[width=1\linewidth]{figs/scriptVersion}
 \end{frame}
 
 \subsection{Compiling iteration results}
 \begin{frame}{Compiling iteration results}
-xxx
+If you terminate the EM algorithm early, you may want to use the results from whatever the final completed iteration was. To do this:
+
+\includegraphics[width=1\linewidth]{figs/compileResultsExample}
+
+
 \end{frame}
 
 
